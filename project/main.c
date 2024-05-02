@@ -116,7 +116,7 @@ void __interrupt_vec(WDT_VECTOR) WDT()
     
     buzzer_set_period(75);
     if (secondCount >= 25){
-      P1OUT ^= (LED_GREEN | LED_RED);
+      P1OUT ^= (LED_BLUE | LED_RED);
       secondCount = 0;
     }
     break;
