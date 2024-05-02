@@ -44,7 +44,7 @@ void buzzer_init(){
 void buzzer_set_period(short cycles){
 
   CCR0 = cycles;
-  CCR1 = cycles >> 1;
+  CCR1 = cycles >> 3;
 
 }
   
@@ -55,7 +55,6 @@ int state = 0;
 int currLed = 0; //For state 2
 int redCount = 0; //For state 3
 int blinking = 0;
-//int buzzerCount = 0;
 
 void switch_interrupt_handler()
 {  
@@ -65,17 +64,17 @@ void switch_interrupt_handler()
   P2IES &= (p2val | ~SWITCHES);
 
   if ((p2val & SW1) == 0) {
-    state = 0;
+    state = 2;
     secondCount = 0;
   }
 
   if ((p2val & SW2) == 0) {
-    state = 1;
+    state = 0;
     secondCount = 0;
   }
 
   if ((p2val & SW3) == 0) {
-    state = 2;
+    state = 1;
     secondCount = 0;
   }
 
@@ -96,12 +95,10 @@ void __interrupt_vec(PORT2_VECTOR) Port_2(){
 void tunes(state)
 {
 
-  float C4 = 261.61;
-  float D4 = 293.66;
-  float E4 = 329.63;
-  float G4 = 392.00;
-  float A4 = 440.00;
-  float B4 = 493.88;
+  float C4 = 260.00;
+  float D4 = 280.00;
+  float E4 = 330.00;
+  float G4 = 300.00;
   
 }
 
