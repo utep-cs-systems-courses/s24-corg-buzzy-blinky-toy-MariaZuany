@@ -4,7 +4,7 @@
 
 
 
-#define LED_BLUE BIT6
+#define LED_GREEN BIT6
 
 #define LED_RED BIT0
 
