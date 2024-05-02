@@ -9,6 +9,15 @@
 #define SW4 BIT3
 #define SWITCHES (SW1 | SW2 | SW3 | SW4)
 
+#ifndef led_included
+
+int secondCount =0;
+int state = 0;
+int currLed = 0;
+int redCount =0;
+int blinking = 0;
+
+
 int main(void) {
 
   //This gets the leds and turns them off
@@ -45,16 +54,7 @@ void buzzer_set_period(short cycles){
 
   CCR0 = cycles;
   CCR1 = cycles >> 3;
-
 }
-  
-
-
-int secondCount = 0;
-int state = 0;
-int currLed = 0; //For state 2
-int redCount = 0; //For state 3
-int blinking = 0;
 
 void switch_interrupt_handler()
 {  
