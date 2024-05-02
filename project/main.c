@@ -13,7 +13,7 @@ int main(void) {
 
   //This gets the leds and turns them off
   P1DIR |= LEDS;
-  P1OUT &= ~(LED_BLUE | LED_RED);
+  P1OUT &= ~(LED_GREEN | LED_RED);
 
   //Setting up clocks
   configureClocks();
@@ -116,7 +116,7 @@ void __interrupt_vec(WDT_VECTOR) WDT()
     
     buzzer_set_period(75);
     if (secondCount >= 25){
-      P1OUT ^= (LED_BLUE | LED_RED);
+      P1OUT ^= (LED_GREEN | LED_RED);
       secondCount = 0;
     }
     break;
@@ -125,7 +125,7 @@ void __interrupt_vec(WDT_VECTOR) WDT()
 
     buzzer_set_period(150);
     if (secondCount >= 75){
-      P1OUT ^= (LED_BLUE | LED_RED);
+      P1OUT ^= (LED_GREEN | LED_RED);
       secondCount = 0;
     }
     break;
@@ -135,10 +135,10 @@ void __interrupt_vec(WDT_VECTOR) WDT()
     buzzer_set_period(300);
     if (secondCount >= 50) {
       if (currLed){
-	P1OUT = (P1OUT & ~LED_RED) | LED_BLUE;
+	P1OUT = (P1OUT & ~LED_RED) | LED_GREEN;
 	currLed = 0;
       } else {
-	P1OUT = (P1OUT & ~LED_BLUE) | LED_RED;
+	P1OUT = (P1OUT & ~LED_GREEN) | LED_RED;
 	currLed = 1;
       }
     }
@@ -148,7 +148,7 @@ void __interrupt_vec(WDT_VECTOR) WDT()
     buzzer_set_period(400);
     if (secondCount >= 25){
       if (redCount <= 10) {
-	P1OUT ^= LED_BLUE;
+	P1OUT ^= LED_GREEN;
 	redCount += 1;
       } else {
 	P1OUT ^= LED_RED;
