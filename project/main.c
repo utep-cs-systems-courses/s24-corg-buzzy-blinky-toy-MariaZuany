@@ -1,15 +1,13 @@
 #include <msp430.h>
 #include "libTimer.h"
 #include "led.h"
-//#include "buzzer.h"
+
 
 #define SW1 BIT0
 #define SW2 BIT1
 #define SW3 BIT2
 #define SW4 BIT3
 #define SWITCHES (SW1 | SW2 | SW3 | SW4)
-
-#ifndef led_included
 
 int secondCount =0;
 int state = 0;
